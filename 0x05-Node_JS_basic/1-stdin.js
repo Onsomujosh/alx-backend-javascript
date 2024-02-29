@@ -1,18 +1,12 @@
-process.stdout.write('Welcome to Holberton School, what is your name?\n');
+console.log('Welcome to Holberton School, what is your name?');
 
 process.stdin.on('readable', () => {
   const chunk = process.stdin.read();
-
-  if (chunk) {
-    const name = chunk.toString().trim();
-    if (name === '') {
-      process.stdout.write('Your name is: [empty]\n');
-    } else {
-      process.stdout.write(`Your name is: ${name}\n`);
-    }
+  if (chunk !== null) {
+    process.stdout.write(`Your name is: ${chunk}`);
   }
 });
 
-process.on('exit', () => {
-  process.stdout.write('This important software is now closing\n');
+process.stdin.on('end', () => {
+  console.log('This important software is now closing');
 });
